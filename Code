@@ -75,6 +75,11 @@ sibling_1
 sibling_2=sibling_1.next_sibling
 sibling_2
 
+#Use the object sibling_2 and the method next_sibling to find the salary of Stephen Curry:
+sibling_3=sibling_2.next_sibling
+sibling_3
+OR
+sibling_2.next_sibling (both will give you the same result)
 
 
 
