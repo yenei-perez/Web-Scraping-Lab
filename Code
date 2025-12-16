@@ -1,0 +1,8 @@
+#First, we will important the necessary libraries
+!pip install bs4
+!pip install requests pandas
+
+#Next, we will import the required modules and functions
+from bs4 import BeautifulSoup # this module helps in web scrapping.
+import requests  # this module helps us to download a web page
+
