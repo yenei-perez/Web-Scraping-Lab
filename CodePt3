@@ -84,3 +84,17 @@ list_input
 
 #If we set the href attribute to True, regardless of what the value is, the code finds all tags with href value:
 table_bs.find_all(href=True)
+
+Here are 3 quick & easy exercises you can try for yourself:
+Find all the <a> tags without href value
+Find all the elements that do not contain any links
+Using the soup object soup, find the element with the id attribute content set to "boldest"
+
+Solutions:
+table_bs.find_all(lambda tag: tag.name == "a" and not tag.has_attr("href"))
+table_bs.find_all(lambda tag: tag.name != "a" and not tag.find('a'))
+soup.find_all(id="boldest")
+
+
+
+
