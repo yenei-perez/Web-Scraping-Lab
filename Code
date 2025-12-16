@@ -57,6 +57,23 @@ tag_object
 #Enclosed in the bold attribute b, it helps to use the tree representation. 
 #We can navigate down the tree using the child attribute to get the name.
 #The Tag object is a tree of objects. We can access the child of the tag or navigate down the branch as follows:
+tag_child =tag_object.b
+tag_child
+
+#You can access the parent with:
+parent_tag=tag_child.parent
+parent_tag
+
+#tag_object parent is the body element
+tag_object.parent
+
+#tag_object sibling is the paragraph element
+sibling_1=tag_object.next_sibling
+sibling_1
+
+#sibling_2 is the header element, which is also a sibling of both sibling_1 and tag_object
+sibling_2=sibling_1.next_sibling
+sibling_2
 
 
 
