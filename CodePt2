@@ -1,0 +1,27 @@
+HTML Attributes
+#If the tag has attributes, the tag id="boldest" has an attribute id whose value is boldest. 
+#You can access a tag’s attributes by treating the tag like a dictionary:
+tag_child['id']
+
+#You can access that dictionary directly as attrs:
+tag_child.attrs
+
+#We can also obtain the content of the attribute of the tag using the Python get() method.
+tag_child.get('id')
+
+
+Navigable Strings
+#A string corresponds to a bit of text or content within a tag. 
+#Beautiful Soup uses the NavigableString class to contain this text. 
+#In our HTML we can obtain the name of the first player by extracting the string of the Tag object tag_child as follows:
+tag_string=tag_child.string
+tag_string
+
+#We can verify the type is Navigable String
+type(tag_string)
+
+#A NavigableString is similar to a Python string or Unicode string. 
+#To be more precise, the main difference is that it also supports some BeautifulSoup features. 
+#We can convert it to string object in Python:
+unicode_string = str(tag_string)
+unicode_string
