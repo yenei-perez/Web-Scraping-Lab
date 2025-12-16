@@ -7,4 +7,4 @@ Code will teach you about Tags, Children, Parents and Siblings
 
 CodePt2 will teach you about HTML Attributes & Navigable Strings
 
-CodePt3 will teach you about Filters
+CodePt3 will teach you about Filters and Attributes
