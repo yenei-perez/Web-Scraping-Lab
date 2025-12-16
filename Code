@@ -6,3 +6,59 @@
 from bs4 import BeautifulSoup # this module helps in web scrapping.
 import requests  # this module helps us to download a web page
 
+#Consider the following HTML-
+%%html
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+<h3><b id='boldest'>Lebron James</b></h3>
+<p> Salary: $ 92,000,000 </p>
+<h3> Stephen Curry</h3>
+<p> Salary: $85,000, 000 </p>
+<h3> Kevin Durant </h3>
+<p> Salary: $73,200, 000</p>
+</body>
+</html>
+
+#We can store it as a string in the variable HTML:
+html="<!DOCTYPE html><html><head><title>Page Title</title></head><body><h3><b 
+id='boldest'>Lebron James</b></h3><p> Salary: $ 92,000,000 </p><h3> Stephen Curry</h3><p> Salary: $85,000, 000 </p><h3> 
+Kevin Durant </h3><p> Salary: $73,200, 000</p></body></html>"
+
+#To parse a document, pass it into the BeautifulSoup constructor. 
+#The BeautifulSoup object represents the document as a nested data structure:
+soup = BeautifulSoup(html, 'html.parser')
+
+#First, the document is converted to Unicode (similar to ASCII) and HTML entities are converted to Unicode characters. 
+#Beautiful Soup transforms a complex HTML document into a complex tree of Python objects. 
+#The BeautifulSoup object can create other types of objects. 
+#In this lab, we will cover BeautifulSoup and Tag objects, that for the purposes of this lab are identical. 
+#Finally, we will look at NavigableString objects.
+
+#We can use the method prettify() to display the HTML in the nested structure:
+print(soup.prettify())
+
+#Let's say we want the title of the page and the name of the top paid player.
+#We can use the Tag. The Tag object corresponds to an HTML tag in the original document, for example, the tag title.
+tag_object=soup.title
+print("tag object:",tag_object)
+
+#We can see the tag type bs4.element.Tag
+print("tag object type:",type(tag_object))
+
+#If there is more than one Tag with the same name, the first element with that Tag name is called. 
+#This corresponds to the most paid player:
+tag_object=soup.h3
+tag_object
+
+#Enclosed in the bold attribute b, it helps to use the tree representation. 
+#We can navigate down the tree using the child attribute to get the name.
+#The Tag object is a tree of objects. We can access the child of the tag or navigate down the branch as follows:
+
+
+
+
+
