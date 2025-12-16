@@ -6,3 +6,5 @@ Beautiful Soup is a Python library for pulling data out of HTML and XML files, w
 Code will teach you about Tags, Children, Parents and Siblings
 
 Code2 will teach you about HTML Attributes & Navigable Strings
+
+Code3 will teach you about Filters
