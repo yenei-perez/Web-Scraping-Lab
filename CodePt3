@@ -1,0 +1,86 @@
+Filters
+
+#Filters allow you to find complex patterns, the simplest filter is a string. 
+#In this section we will pass a string to a different filter method and Beautiful Soup will perform a match against that exact string. 
+#Consider the following HTML of rocket launches:
+
+%%html
+<table>
+  <tr>
+    <td id='flight' >Flight No</td>
+    <td>Launch site</td> 
+    <td>Payload mass</td>
+   </tr>
+  <tr> 
+    <td>1</td>
+    <td><a href='https://en.wikipedia.org/wiki/Florida'>Florida</a></td>
+    <td>300 kg</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td><a href='https://en.wikipedia.org/wiki/Texas'>Texas</a></td>
+    <td>94 kg</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td><a href='https://en.wikipedia.org/wiki/Florida'>Florida<a> </td>
+    <td>80 kg</td>
+  </tr>
+</table>
+
+
+#We can store it as a string in the variable table:
+table="<table><tr><td id='flight'>Flight No</td><td>Launch site</td> <td>Payload 
+mass</td></tr><tr> <td>1</td><td><a href='https://en.wikipedia.org/wiki/Florida'>Florida<a></td><td>300 kg</td></tr><tr><td>2</td><td><a 
+href='https://en.wikipedia.org/wiki/Texas'>Texas</a></td><td>94 kg</td></tr><tr><td>3</td><td><a href='https://en.wikipedia.org/wiki/Florida'>Florida<a> 
+</td><td>80 kg</td></tr></table>"
+table_bs = BeautifulSoup(table, 'html.parser')
+
+#The find_all() method looks through a tag’s descendants and retrieves all descendants that match your filters.
+#The Method signature for find_all(name, attrs, recursive, string, limit, **kwargs)
+
+#When we set the name parameter to a tag name, the method will extract all the tags with that name and its children.
+table_rows=table_bs.find_all('tr')
+table_rows
+
+#The result is a Python Iterable just like a list, each element is a tag object:
+first_row =table_rows[0]
+first_row
+
+#The type is tag
+print(type(first_row))
+
+#We can obtain the child
+first_row.td
+
+#If we iterate through the list, each element corresponds to a row in the table:
+for i,row in enumerate(table_rows):
+    print("row",i,"is",row)
+
+#As row is a cell object, we can apply the method find_all to it and extract table cells in the object cells using the tag td, this is all the children with the name td. 
+#The result is a list, each element corresponds to a cell and is a Tag object, we can iterate through this list as well.
+#We can extract the content using the string attribute.
+for i,row in enumerate(table_rows):
+    print("row",i)
+    cells=row.find_all('td')
+    for j,cell in enumerate(cells):
+        print('colunm',j,"cell",cell)
+
+#If we use a list we can match against any item in that list.
+list_input=table_bs .find_all(name=["tr", "td"])
+list_input
+
+
+Attributes
+
+#If the argument is not recognized it will be turned into a filter on the tag’s attributes. 
+#For example with the id argument, Beautiful Soup will filter against each tag’s id attribute. 
+#For example, the first td elements have a value of id of flight, therefore we can filter based on that id value.
+table_bs.find_all(id="flight")
+
+#We can find all the elements that have links to the Florida Wikipedia page:
+list_input=table_bs.find_all(href="https://en.wikipedia.org/wiki/Florida")
+list_input
+
+#If we set the href attribute to True, regardless of what the value is, the code finds all tags with href value:
+table_bs.find_all(href=True)
